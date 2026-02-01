@@ -20,7 +20,7 @@ jobs:
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y netcat openssl
+          sudo apt-get install -y --no-install-recommends netcat-openbsd openssl
           echo "Testing TCP connect to $SMTP_SERVER:$SMTP_PORT"
           nc -vz $SMTP_SERVER $SMTP_PORT || true
           if [ "$SMTP_PORT" = "465" ]; then
